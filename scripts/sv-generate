@@ -75,9 +75,11 @@ def parse_cmdline():
 #-------------------------------------------------------------------------
 
 openai_models = [
+  "rtl-llm/opt-1.3b",
   "gpt-3.5-turbo",
   "gpt-4",
   "gpt-4-turbo",
+  "gpt-4o",
 ]
 
 nim_chat_models = [
@@ -342,17 +344,21 @@ def main():
   print( "", file=file )
 
   # Create LLM messages
-
   msgs = [ SystemMessage(system_msg), HumanMessage(full_prompt) ]
+  #msgs = [ {"role": "user", "content": full_prompt} ]
 
   # Query the LLM
 
   if model in openai_models:
+    openai_api_key = "EMPTY"
+    openai_api_base = "http://localhost:8000/v1"
     llm = ChatOpenAI(
       model       = model,
       temperature = temperature,
       top_p       = top_p,
       max_tokens  = max_tokens,
+      api_key=openai_api_key,
+      base_url=openai_api_base,
     )
   elif model in nim_chat_models:
     llm = ChatNVIDIA(
@@ -398,7 +404,7 @@ def main():
   # Display the response
 
   out.print("")
-  out.print("Reponse")
+  out.print("Response")
   out.print("-"*74)
 
   out.print("")
