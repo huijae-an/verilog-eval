@@ -88,7 +88,11 @@ openai_models = [
   "rtl-llm/codellama7b_hj_learningrate_5e-6",
   "rtl-llm/codellama7b_hj_learningrate_5e-4",
   "rtl-llm/codellama7b_hj_epoch_2",
-  "rtl-llm/codellama7b_hj_epoch_3"
+  "rtl-llm/codellama7b_hj_epoch_3",
+  "rtl-llm/codellama7b_hj_vrlgevl_prompt_solution",
+  "rtl-llm/codellama7b_hj_baseline_mgVerilog",
+  "rtl-llm/codellama7b-auto-1",
+  "rtl-llm/codellama7b-auto-2"
 ]
 
 nim_chat_models = [
