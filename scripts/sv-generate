@@ -92,7 +92,9 @@ openai_models = [
   "rtl-llm/codellama7b_hj_vrlgevl_prompt_solution",
   "rtl-llm/codellama7b_hj_baseline_mgVerilog",
   "rtl-llm/codellama7b-auto-1",
-  "rtl-llm/codellama7b-auto-2"
+  "rtl-llm/codellama7b-auto-2",
+  "rtl-llm/codellama7b-auto-3",
+  "rtl-llm/plain_codellama7b_instruct_hf"
 ]
 
 nim_chat_models = [
