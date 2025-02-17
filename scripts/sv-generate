@@ -380,8 +380,7 @@ def main():
         temperature=temperature,
         max_tokens=max_tokens,
         timeout=None,
-        max_retries=25,
-        google_api_key="AIzaSyA0DjJmZnJMknydIQJp6uWjWfT5Iqu3Vzg",
+        max_retries=25
     )
   elif model in nim_chat_models:
     llm = ChatNVIDIA(
