@@ -33,8 +33,9 @@ from collections import namedtuple
 
 from langchain_nvidia_ai_endpoints import ChatNVIDIA
 from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.schema   import SystemMessage, HumanMessage
-from langchain.callbacks import get_openai_callback
+from langchain_community.callbacks.manager import get_openai_callback
 
 #-------------------------------------------------------------------------
 # Command line processing
@@ -75,11 +76,24 @@ def parse_cmdline():
 #-------------------------------------------------------------------------
 
 openai_models = [
+  "rtl-llm/qwen7b-v2c-chat-template",
+  "Qwen/Qwen2.5-Coder-7B",
+  "meta-llama/CodeLlama-7b-Instruct-hf",
   "rtl-llm/opt-1.3b",
+  "rtl-llm/codellama-7b-bf16",
+  "rtl-llm/codellama-7b-c2v-bf16",
+  "rtl-llm/codellama-7b-chisel-bf16",
+  "rtl-llm/codellama_12_06",
   "gpt-3.5-turbo",
   "gpt-4",
   "gpt-4-turbo",
   "gpt-4o",
+]
+
+google_models = [
+  "gemini-exp-1206",
+  "gemini-1.5-flash",
+  "gemini-1.5-pro",
 ]
 
 nim_chat_models = [
@@ -238,7 +252,7 @@ def main():
   if opts.model in model_aliases:
     model = model_aliases[opts.model]
 
-  if model not in openai_models + nim_chat_models + manual_models:
+  if model not in openai_models + google_models + nim_chat_models + manual_models:
     print("")
     print(f"ERROR: Unknown model {model}")
     print("")
@@ -359,6 +373,15 @@ def main():
       max_tokens  = max_tokens,
       api_key=openai_api_key,
       base_url=openai_api_base,
+    )
+  elif model in google_models:
+    llm = ChatGoogleGenerativeAI(
+        model=model,
+        temperature=temperature,
+        max_tokens=max_tokens,
+        timeout=None,
+        max_retries=25,
+        google_api_key="AIzaSyA0DjJmZnJMknydIQJp6uWjWfT5Iqu3Vzg",
     )
   elif model in nim_chat_models:
     llm = ChatNVIDIA(
@@ -556,10 +579,13 @@ def main():
           found_code_start = True
 
       elif found_code_start and not found_code_end:
-        if line.strip() == "[DONE]":
+        if line.strip() == "[DONE]" or line.strip() == "[END]":
           found_code_end = True
         elif line.rstrip().endswith("[DONE]"):
           found_code_lines.append( line.rstrip().replace("[DONE]","") )
+          found_code_end = True
+        elif line.rstrip().endswith("[END]"):
+          found_code_lines.append( line.rstrip().replace("[END]","") )
           found_code_end = True
         else:
           found_code_lines.append( line )
