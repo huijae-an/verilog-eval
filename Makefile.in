@@ -75,8 +75,8 @@ problem_prompts := $(patsubst %, %_prompt.txt, $(problems))
 #  https://stackoverflow.com/questions/451413
 #
 
-REDIRECT_LOG= &>
-REDIRECT_APPEND_LOG= &>>
+REDIRECT_LOG= >
+REDIRECT_APPEND_LOG= >>
 VERBOSE:=0
 QUIET=@
 ifeq ($(VERBOSE),1)
