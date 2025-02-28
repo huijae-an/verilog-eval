@@ -375,7 +375,6 @@ def main():
       max_tokens  = max_tokens,
       api_key=openai_api_key,
       base_url=openai_api_base,
-<<<<<<< HEAD
     )
   elif model in google_models:
     llm = ChatGoogleGenerativeAI(
@@ -384,8 +383,6 @@ def main():
         max_tokens=max_tokens,
         timeout=None,
         max_retries=25
-=======
->>>>>>> 39f63f0 (opt-1.3b working locally)
     )
   elif model in nim_chat_models:
     llm = ChatNVIDIA(
