@@ -84,6 +84,7 @@ openai_models = [
   "rtl-llm/codellama-7b-c2v-bf16",
   "rtl-llm/codellama-7b-chisel-bf16",
   "rtl-llm/codellama_12_06",
+  "rtl-llm/opt-1.3b",
   "gpt-3.5-turbo",
   "gpt-4",
   "gpt-4-turbo",
@@ -374,6 +375,7 @@ def main():
       max_tokens  = max_tokens,
       api_key=openai_api_key,
       base_url=openai_api_base,
+<<<<<<< HEAD
     )
   elif model in google_models:
     llm = ChatGoogleGenerativeAI(
@@ -382,6 +384,8 @@ def main():
         max_tokens=max_tokens,
         timeout=None,
         max_retries=25
+=======
+>>>>>>> 39f63f0 (opt-1.3b working locally)
     )
   elif model in nim_chat_models:
     llm = ChatNVIDIA(
