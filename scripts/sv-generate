@@ -103,6 +103,7 @@ openai_models = [
   "rtl-llm/qwen2.5_new_chisel",
   "rtl-llm/qwen2.5_new_chisel_epoch2",
   "rtl-llm/qwen2.5_new_chisel_epoch3",
+  "rtl-llm/qwen2.5_chisel_c_vhdl",
   "rtl-llm/qwen2.5_chisel_c_vhdl_epoch2"
 ]
 
