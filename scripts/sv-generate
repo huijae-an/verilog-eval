@@ -94,7 +94,16 @@ openai_models = [
   "rtl-llm/codellama7b-auto-1",
   "rtl-llm/codellama7b-auto-2",
   "rtl-llm/codellama7b-auto-3",
-  "rtl-llm/plain_codellama7b_instruct_hf"
+  "rtl-llm/plain_codellama7b_instruct_hf",
+  "rtl-llm/codellama7b-v2c2v-2",
+  "Qwen/Qwen2.5-Coder-7B-Instruct",
+  "rtl-llm/qwen2.5_old_chisel",
+  "rtl-llm/qwen2.5_old_chisel_epoch2",
+  "rtl-llm/qwen2.5_old_chisel_epoch3",
+  "rtl-llm/qwen2.5_new_chisel",
+  "rtl-llm/qwen2.5_new_chisel_epoch2",
+  "rtl-llm/qwen2.5_new_chisel_epoch3",
+  "rtl-llm/qwen2.5_chisel_c_vhdl_epoch2"
 ]
 
 nim_chat_models = [
